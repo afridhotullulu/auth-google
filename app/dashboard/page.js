@@ -34,6 +34,20 @@ export default function Dashboard() {
       <h1>Dashboard</h1>
 
       <p>Welcome: {session.user.email}</p>
+      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+  <img
+    src={session.user.image}
+    alt="profile"
+    width={50}
+    height={50}
+    style={{ borderRadius: "50%" }}
+  />
+
+  <div>
+    <p><b>{session.user.name}</b></p>
+    <p>{session.user.email}</p>
+  </div>
+</div>
 
       <button onClick={() => signOut()}>
         Logout
