@@ -1,7 +1,19 @@
+"use client";
+
+import { signIn, signOut } from "next-auth/react";
+
 export default function Home() {
   return (
     <main style={{ padding: 20 }}>
-      <h1>🚀 Next.js sudah jalan</h1>
+      <h1>Next.js Google Auth</h1>
+
+      <button onClick={() => signIn("google")}>
+        Login dengan Google
+      </button>
+
+      <button onClick={() => signOut()}>
+        Logout
+      </button>
     </main>
   );
 }
