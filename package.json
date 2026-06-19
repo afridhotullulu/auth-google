@@ -8,9 +8,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "dotenv": "^17.4.2",
     "next": "latest",
+    "next-auth": "^4.24.14",
     "react": "latest",
-    "react-dom": "latest",
-    "dotenv": "^17.4.2"
+    "react-dom": "latest"
   }
 }
