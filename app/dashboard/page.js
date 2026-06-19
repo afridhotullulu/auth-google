@@ -29,44 +29,60 @@ export default function Dashboard() {
     }
   };
 
-  return (
-    <main style={{ padding: 20 }}>
-      <h1>Dashboard</h1>
+ return (
+  <main style={{ padding: 20 }}>
+    <h1>Dashboard</h1>
 
-      <p>Welcome: {session.user.email}</p>
-      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-  <img
-    src={session.user.image}
-    alt="profile"
-    width={50}
-    height={50}
-    style={{ borderRadius: "50%" }}
-  />
+    <p>Welcome: {session.user.email}</p>
 
-  <div>
-    <p><b>{session.user.name}</b></p>
-    <p>{session.user.email}</p>
-  </div>
-</div>
-
-      <button onClick={() => signOut()}>
-        Logout
-      </button>
-
-      <hr />
-
-      <h2>Upload File</h2>
-
-      <input
-        type="file"
-        onChange={(e) => setFile(e.target.files[0])}
+    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+      <img
+        src={session.user.image}
+        alt="profile"
+        width={50}
+        height={50}
+        style={{ borderRadius: "50%" }}
       />
 
-      <br /><br />
+      <div>
+        <p><b>{session.user.name}</b></p>
+        <p>{session.user.email}</p>
+      </div>
+    </div>
 
-      <button onClick={uploadFile}>
-        Upload File
+    <hr />
+
+    <h2>Upload File</h2>
+
+    <input
+      type="file"
+      onChange={(e) => setFile(e.target.files[0])}
+    />
+
+    <br /><br />
+
+    <button onClick={uploadFile}>
+      Upload File
+    </button>
+
+    {/* 👇 INI LOGOUT DI PALING BAWAH */}
+    <div style={{ marginTop: 40, padding: 15, border: "1px solid #ddd", borderRadius: 10 }}>
+      <p style={{ marginBottom: 10 }}>Sudah selesai? Logout dulu ya</p>
+
+      <button
+        onClick={() => signOut()}
+        style={{
+          padding: "10px 15px",
+          backgroundColor: "red",
+          color: "white",
+          border: "none",
+          borderRadius: 8,
+          cursor: "pointer"
+        }}
+      >
+        Logout
       </button>
-    </main>
-  );
+    </div>
+  </main>
+);
 }
