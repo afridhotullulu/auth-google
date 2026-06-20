@@ -4,29 +4,26 @@ import { useSession, signOut } from "next-auth/react";
 import { useState, useEffect } from "react";
 
 export default function Dashboard() {
+  const { data: session, status } = useSession();
+
   const [file, setFile] = useState(null);
   const [files, setFiles] = useState([]);
 
-  const { data: session, status } = useSession();
+  useEffect(() => {
+    fetch("/api/upload")
+      .then((res) => res.json())
+      .then((data) => setFiles(data.files || []))
+      .catch(() => setFiles([]));
+  }, []);
 
-  // loading state
   if (status === "loading") {
     return <p>Loading...</p>;
   }
 
-  // not logged in
   if (!session) {
     return <p>Not logged in</p>;
   }
 
-  // load file list
-  useEffect(() => {
-    fetch("/api/upload")
-      .then((res) => res.json())
-      .then((data) => setFiles(data.files || []));
-  }, []);
-
-  // upload function
   const uploadFile = async () => {
     if (!file) return alert("Pilih file dulu");
 
@@ -39,7 +36,6 @@ export default function Dashboard() {
     });
 
     const data = await res.json();
-    console.log(data);
 
     if (res.ok) {
       alert(`Upload sukses: ${data.file.name}`);
@@ -53,7 +49,6 @@ export default function Dashboard() {
     <main style={{ padding: 20 }}>
       <h1>Dashboard</h1>
 
-      {/* USER INFO */}
       <p>Welcome: {session.user.email}</p>
 
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -73,7 +68,6 @@ export default function Dashboard() {
 
       <hr />
 
-      {/* UPLOAD */}
       <h2>Upload File</h2>
 
       <input
@@ -87,7 +81,6 @@ export default function Dashboard() {
         Upload File
       </button>
 
-      {/* FILE LIST */}
       <hr />
 
       <h3>File yang sudah diupload:</h3>
@@ -104,19 +97,14 @@ export default function Dashboard() {
         </ul>
       )}
 
-      {/* LOGOUT */}
-      <div style={{ marginTop: 40, padding: 15, border: "1px solid #ddd", borderRadius: 10 }}>
-        <p style={{ marginBottom: 10 }}>Sudah selesai? Logout dulu ya</p>
-
+      <div style={{ marginTop: 40 }}>
         <button
           onClick={() => signOut()}
           style={{
             padding: "10px 15px",
             backgroundColor: "red",
             color: "white",
-            border: "none",
-            borderRadius: 8,
-            cursor: "pointer"
+            borderRadius: 8
           }}
         >
           Logout
