@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/user/auth-google/app/layout.js"],"sourcesContent":["\"use client\";\r\n\r\nimport { SessionProvider } from \"next-auth/react\";\r\n\r\nexport default function RootLayout({ children }) {\r\n  return (\r\n    <html>\r\n      <body>\r\n        <SessionProvider>{children}</SessionProvider>\r\n      </body>\r\n    </html>\r\n  );\r\n}"],"names":["RootLayout","children"],"mappings":";;;;;AAEA;AAFA;;;AAIe,SAASA,WAAW,EAAEC,QAAQ,EAAE;IAC7C,qBACE,6LAAC;kBACC,cAAA,6LAAC;sBACC,cAAA,6LAAC,oKAAe;0BAAEA;;;;;;;;;;;;;;;;AAI1B;KARwBD"}}]
+}

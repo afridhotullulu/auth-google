@@ -4,30 +4,37 @@ import { useSession, signOut } from "next-auth/react";
 import { useState } from "react";
 
 export default function Dashboard() {
-  const { data: session } = useSession();
   const [file, setFile] = useState(null);
 
-  if (!session) {
-    return <p>Loading...</p>;
-  }
+  const { data: session, status } = useSession();
+
+if (status === "loading") {
+  return <p>Loading...</p>;
+}
+
+if (!session) {
+  return <p>Not logged in</p>;
+}
 
   const uploadFile = async () => {
-    if (!file) return alert("Pilih file dulu");
+  if (!file) return alert("Pilih file dulu");
 
-    const formData = new FormData();
-    formData.append("file", file);
+  const formData = new FormData();
+  formData.append("file", file);
 
-    const res = await fetch("/api/upload", {
-      method: "POST",
-      body: formData,
-    });
+  const res = await fetch("/api/upload", {
+    method: "POST",
+    body: formData,
+  });
 
-    if (res.ok) {
-      alert("Upload sukses!");
-    } else {
-      alert("Upload gagal");
-    }
-  };
+  const data = await res.json();
+
+  if (res.ok) {
+    alert("Upload sukses: " + data.name);
+  } else {
+    alert("Upload gagal");
+  }
+};
 
  return (
   <main style={{ padding: 20 }}>

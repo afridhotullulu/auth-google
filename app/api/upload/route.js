@@ -16,5 +16,5 @@ export async function POST(req) {
 
   await writeFile(filePath, buffer);
 
-  return Response.json({ success: true });
+  return Response.json({ success: true, name: file.name });
 }
