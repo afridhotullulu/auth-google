@@ -9,6 +9,7 @@ export default function Dashboard() {
   const [file, setFile] = useState(null);
   const [files, setFiles] = useState([]);
 
+  // ambil data file
   useEffect(() => {
     fetch("/api/upload")
       .then((res) => res.json())
@@ -16,12 +17,23 @@ export default function Dashboard() {
       .catch(() => setFiles([]));
   }, []);
 
+  // loading state
   if (status === "loading") {
-    return <p>Loading...</p>;
+    return (
+      <main style={{ padding: 20 }}>
+        <p>Loading...</p>
+      </main>
+    );
   }
 
+  // kalau belum login → langsung balik ke home (login page)
   if (!session) {
-    return <p>Not logged in</p>;
+    return (
+      <main style={{ padding: 20 }}>
+        <p>Redirecting to login...</p>
+        {typeof window !== "undefined" && (window.location.href = "/")}
+      </main>
+    );
   }
 
   const uploadFile = async () => {
@@ -51,6 +63,7 @@ export default function Dashboard() {
 
       <p>Welcome: {session.user.email}</p>
 
+      {/* PROFILE */}
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
         <img
           src={session.user.image}
@@ -68,6 +81,7 @@ export default function Dashboard() {
 
       <hr />
 
+      {/* UPLOAD */}
       <h2>Upload File</h2>
 
       <input
@@ -83,6 +97,7 @@ export default function Dashboard() {
 
       <hr />
 
+      {/* LIST FILE */}
       <h3>File yang sudah diupload:</h3>
 
       {files.length === 0 ? (
@@ -97,6 +112,7 @@ export default function Dashboard() {
         </ul>
       )}
 
+      {/* LOGOUT */}
       <div style={{ marginTop: 40 }}>
         <button
           onClick={() => signOut({ callbackUrl: "/" })}
@@ -104,7 +120,8 @@ export default function Dashboard() {
             padding: "10px 15px",
             backgroundColor: "red",
             color: "white",
-            borderRadius: 8
+            borderRadius: 8,
+            cursor: "pointer"
           }}
         >
           Logout
