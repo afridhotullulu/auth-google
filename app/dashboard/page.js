@@ -32,10 +32,10 @@ if (!session) {
   console.log(data);
 
   if (res.ok) {
-    alert("Upload sukses: " + data.name);
-  } else {
-    alert("Upload gagal");
-  }
+  alert(`Upload sukses: ${data.name}`);
+} else {
+  alert("Upload gagal");
+}
 };
 
  return (
