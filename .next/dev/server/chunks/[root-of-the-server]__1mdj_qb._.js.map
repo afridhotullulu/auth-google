@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 106, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/user/auth-google/app/api/auth/%5B...nextauth%5D/route.js"],"sourcesContent":["import NextAuth from \"next-auth\";\r\nimport GoogleProvider from \"next-auth/providers/google\";\r\n\r\nconst handler = NextAuth({\r\n  providers: [\r\n    GoogleProvider({\r\n      clientId: process.env.GOOGLE_CLIENT_ID,\r\n      clientSecret: process.env.GOOGLE_CLIENT_SECRET,\r\n    }),\r\n  ],\r\n\r\n  secret: process.env.NEXTAUTH_SECRET,\r\n\r\n  callbacks: {\r\n    async redirect({ url, baseUrl }) {\r\n      return baseUrl + \"/dashboard\";\r\n    },\r\n  },\r\n});\r\n\r\nexport { handler as GET, handler as POST };"],"names":["handler","providers","clientId","process","env","GOOGLE_CLIENT_ID","clientSecret","GOOGLE_CLIENT_SECRET","secret","NEXTAUTH_SECRET","callbacks","redirect","url","baseUrl"],"mappings":";;;;;;AAAA;AACA;;;AAEA,MAAMA,UAAU,IAAA,kJAAQ,EAAC;IACvBC,WAAW;QACT,IAAA,gKAAc,EAAC;YACbC,UAAUC,QAAQC,GAAG,CAACC,gBAAgB;YACtCC,cAAcH,QAAQC,GAAG,CAACG,oBAAoB;QAChD;KACD;IAEDC,QAAQL,QAAQC,GAAG,CAACK,eAAe;IAEnCC,WAAW;QACT,MAAMC,UAAS,EAAEC,GAAG,EAAEC,OAAO,EAAE;YAC7B,OAAOA,UAAU;QACnB;IACF;AACF"}}]
-}

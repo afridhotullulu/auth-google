@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/user/auth-google/app/page.js"],"sourcesContent":["\"use client\";\r\n\r\nimport { signIn, signOut } from \"next-auth/react\";\r\n\r\nexport default function Home() {\r\n  return (\r\n    <main style={{ padding: 20 }}>\r\n      <h1></h1>\r\n\r\n      <button onClick={() => signIn(\"google\")}>\r\n        Login dengan Google\r\n      </button>\r\n\r\n      <button onClick={() => signOut()}>\r\n        Logout\r\n      </button>\r\n    </main>\r\n  );\r\n}"],"names":["Home","style","padding","onClick"],"mappings":";;;;;AAEA;AAFA;;;AAIe,SAASA;IACtB,qBACE,8OAAC;QAAKC,OAAO;YAAEC,SAAS;QAAG;;0BACzB,8OAAC;;;;;0BAED,8OAAC;gBAAOC,SAAS,IAAM,IAAA,wJAAM,EAAC;0BAAW;;;;;;0BAIzC,8OAAC;gBAAOA,SAAS,IAAM,IAAA,yJAAO;0BAAI;;;;;;;;;;;;AAKxC"}}]
-}
