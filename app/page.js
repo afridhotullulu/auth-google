@@ -1,19 +1,18 @@
 "use client";
 
-import { signIn, signOut } from "next-auth/react";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <main style={{ padding: 20 }}>
-      <h1></h1>
+      <h1>Welcome App</h1>
+      <p>Silakan login untuk masuk dashboard</p>
 
-      <button onClick={() => signIn("google")}>
-        Login dengan Google
-      </button>
-
-      <button onClick={() => signOut()}>
-        Logout
-      </button>
+      <Link href="/api/auth/signin">
+        <button style={{ padding: 10 }}>
+          Login dengan Google
+        </button>
+      </Link>
     </main>
   );
 }

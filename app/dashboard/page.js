@@ -99,7 +99,7 @@ export default function Dashboard() {
 
       <div style={{ marginTop: 40 }}>
         <button
-          onClick={() => signOut()}
+          onClick={() => signOut({ callbackUrl: "/" })}
           style={{
             padding: "10px 15px",
             backgroundColor: "red",
